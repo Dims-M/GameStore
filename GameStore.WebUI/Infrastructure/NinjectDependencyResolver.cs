@@ -33,7 +33,7 @@ namespace GameStore.WebUI.Infrastructure
         }
 
         /// <summary>
-        /// Метод привязки.
+        /// Метод привязки. для хранилищь
         /// </summary>
         private void AddBindings()
         {
