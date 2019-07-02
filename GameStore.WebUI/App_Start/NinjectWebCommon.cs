@@ -32,11 +32,11 @@ namespace GameStore.WebUI.App_Start
         {
             bootstrapper.ShutDown();
         }
-        
+
         /// <summary>
-        /// Creates the kernel that will manage your application.
+        ///Создает ядро, которое будет управлять вашим приложением
         /// </summary>
-        /// <returns>The created kernel.</returns>
+        /// <returns>Созданное ядро.</returns>
         private static IKernel CreateKernel()
         {
             var kernel = new StandardKernel();
@@ -48,11 +48,13 @@ namespace GameStore.WebUI.App_Start
         }
 
         /// <summary>
-        /// Load your modules or register your services here!
+        /// Загрузите модули или зарегистрируйте свои услуги здесь!
         /// </summary>
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
+            System.Web.Mvc.DependencyResolver.SetResolver(new
+        GameStore.WebUI.Infrastructure.NinjectDependencyResolver(kernel));
         }        
     }
 }
