@@ -17,6 +17,10 @@ namespace GameStore.WebUI.Controllers
     {
    
         private IGameRepository repository;
+
+        //количество товара на страница сайта.
+        public int pageSize = 4;
+
         /// <summary>
         /// Конструктор 
         /// </summary>
@@ -27,11 +31,13 @@ namespace GameStore.WebUI.Controllers
         }
 
         //Получение списка товаров из хранилища Games
-        public ViewResult List()
+        public ViewResult List(int page = 1)
         {
-            return View(repository.Games);
+            return View(repository.Games
+                .OrderBy(game => game.GameId)
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize));
         }
-
 
     }
 }
